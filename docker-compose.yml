@@ -60,17 +60,17 @@ services:
     working_dir: /app
     environment:
       TZ: Asia/Makassar
-    # ports:
-    #   - "8000:8000"
+    ports:
+      - "8000:8000"
     env_file:
       - .env
     depends_on:
       - mysql
     volumes:
-      - ./backend/app:/app
+      - ./backend:/app
     networks:
       - localnet
-    command: bash -c "bash backend/scripts/startup.sh"
+    command: bash -c "bash -u /app/scripts/startup.sh"
 
 networks:
   localnet:
