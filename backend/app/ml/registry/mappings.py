@@ -2,7 +2,9 @@ MAPPINGS = {
 
     "gender": {
         "Female": 0,
-        "Male": 1
+        "Male": 1,
+        "female": 0,
+        "male": 1
     },
 
     "ethnicity": {

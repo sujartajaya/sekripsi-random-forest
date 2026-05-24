@@ -72,6 +72,31 @@ services:
       - localnet
     command: bash -c "bash -u /app/scripts/startup.sh"
 
+  streamlit:
+    build:
+      context: ./streamlit
+      args:
+        user: appuser
+        uid: 1000
+
+    container_name: streamlit-container
+
+    ports:
+      - "8501:8501"
+
+    volumes:
+      - ./streamlit:/app
+
+    working_dir: /app
+
+    environment:
+      - STREAMLIT_SERVER_RUN_ON_SAVE=true
+      
+    depends_on:
+      - fastapi
+    networks:
+      - localnet
+
 networks:
   localnet:
     driver: bridge
