@@ -98,6 +98,32 @@ services:
     networks:
       - localnet
 
+  nginx:
+    image: nginx:stable-alpine
+
+    container_name: nginx-proxy
+
+    restart: always
+
+    ports:
+      - "80:80"
+
+    depends_on:
+      - fastapi
+
+    volumes:
+
+      # nginx config
+      - ./nginx/conf.d:/etc/nginx/conf.d
+
+      # react build dist
+      - ./frontend/dist:/usr/share/nginx/html
+
+      # optional logs
+      - ./nginx/logs:/var/log/nginx
+    networks:
+      - localnet
+
 networks:
   localnet:
     driver: bridge
