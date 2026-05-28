@@ -3,7 +3,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-MODEL_PATH = BASE_DIR / "models" / "random_forest_manual_v1.pkl"
+MODEL_PATH = BASE_DIR / "models" / "random_forest_manual_v2.pkl"
 
 _model_cache = None
 
@@ -30,4 +30,9 @@ def get_model_info():
         "max_features": getattr(model, "max_features", None),
         "criterion": getattr(model, "criterion", None),
         "random_state": getattr(model, "random_state", None),
+        # tambahan baru
+        "accuracy": getattr(model, "accuracy", None),
+        "precision": getattr(model, "precision", None),
+        "recall": getattr(model, "recall", None),
+        "dataset_rows": getattr(model, "dataset_rows", None),
     }

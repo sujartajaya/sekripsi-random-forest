@@ -1,8 +1,50 @@
+import { useEffect, useState } from "react";
+import api from "../services/api";
+
 import StatsCard from "../components/dashboard/StatsCard";
 import StatusCard from "../components/dashboard/StatusCard";
 import ModelInfo from "../components/dashboard/ModelInfo";
 
+interface ModelInfoType {
+  accuracy: number;
+  precision: number;
+  recall: number;
+  dataset_rows: number;
+
+  model_type?: string;
+  n_trees?: number;
+  max_depth?: number;
+  min_samples_split?: number;
+  min_samples_leaf?: number;
+  max_features?: string;
+  criterion?: string;
+  random_state?: number;
+}
+
 export default function Home() {
+  const [modelInfo, setModelInfo] = useState<ModelInfoType | null>(null);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchModelInfo = async () => {
+      try {
+        const response = await api.get("/model/load-model");
+
+        const data: ModelInfoType = response.data.model_info;
+        console.log("Model Info:");
+        console.log(data);
+        setModelInfo(data);
+      } catch (error) {
+        console.error("Gagal mengambil model info:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchModelInfo();
+  }, []);
+
   return (
     <div>
       <h1 className="text-5xl font-bold text-green-400">
@@ -14,10 +56,41 @@ export default function Home() {
       </p>
 
       <div className="grid grid-cols-4 gap-5 mt-10">
-        <StatsCard title="Accuracy" value="96%" />
-        <StatsCard title="Precision" value="94%" />
-        <StatsCard title="Recall" value="95%" />
-        <StatsCard title="Dataset" value="292 Rows" />
+        <StatsCard
+          title="Accuracy"
+          value={
+            loading || !modelInfo
+              ? "Loading..."
+              : `${(modelInfo.accuracy * 100).toFixed(2)}%`
+          }
+        />
+
+        <StatsCard
+          title="Precision"
+          value={
+            loading || !modelInfo
+              ? "Loading..."
+              : `${(modelInfo.precision * 100).toFixed(2)}%`
+          }
+        />
+
+        <StatsCard
+          title="Recall"
+          value={
+            loading || !modelInfo
+              ? "Loading..."
+              : `${(modelInfo.recall * 100).toFixed(2)}%`
+          }
+        />
+
+        <StatsCard
+          title="Dataset"
+          value={
+            loading || !modelInfo
+              ? "Loading..."
+              : `${modelInfo.dataset_rows} Rows`
+          }
+        />
       </div>
 
       <div className="grid grid-cols-2 gap-10 mt-10">
@@ -29,14 +102,6 @@ export default function Home() {
             algoritma Random Forest yang dibangun menggunakan Python dan
             FastAPI.
           </p>
-
-          <ul className="mt-6 space-y-3 list-disc ml-5 text-gray-300">
-            <li>Prediksi realtime</li>
-            <li>Analisis model</li>
-            <li>Visualisasi data</li>
-            <li>History prediksi</li>
-            <li>Monitoring machine learning</li>
-          </ul>
         </div>
 
         <div>

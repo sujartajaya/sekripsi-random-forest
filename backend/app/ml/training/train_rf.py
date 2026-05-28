@@ -3,8 +3,8 @@ import pickle
 from app.ml.algorithms.random_forest import RandomForest
 from app.ml.algorithms.decision_tree import DecisionTree
 
-OLD_MODEL = "app/ml/models/random_forest_old.pkl"
-NEW_MODEL = "app/ml/models/random_forest_manual_v1.pkl"
+OLD_MODEL = "app/ml/models/random_forest_manual_baru.pkl"
+NEW_MODEL = "app/ml/models/random_forest_manual_v2.pkl"
 
 
 # load model lama

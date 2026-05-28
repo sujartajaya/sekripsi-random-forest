@@ -41,6 +41,10 @@ class RandomForest:
         self.debug = debug
         self.is_trained = False
         self.trees = []
+        self.accuracy = None                # Tambahan akurasi
+        self.precision = None               # Tambahan presisi
+        self.recall = None                  # Tambahan recall
+        self.dataset_rows = None            # Tambahan data set rows
 
         if random_state is not None:
             np.random.seed(random_state)
@@ -71,6 +75,11 @@ class RandomForest:
         print(f"Kriteria           : {self.criterion}")
         print(f"Random state       : {self.random_state}")
         print(f"Jumlah pohon       : {len(self.trees)}")
+        # Explicitly print the evaluation metrics being saved
+        print(f"Accuracy (saat simpan): {self.accuracy:.4f}" if self.accuracy is not None else "Accuracy (saat simpan): None")
+        print(f"Precision (saat simpan): {self.precision:.4f}" if self.precision is not None else "Precision (saat simpan): None")
+        print(f"Recall (saat simpan): {self.recall:.4f}" if self.recall is not None else "Recall (saat simpan): None")
+        print(f"Dataset Rows (saat simpan): {self.dataset_rows}" if self.dataset_rows is not None else "Dataset Rows (saat simpan): None")
 
         return model_path
 

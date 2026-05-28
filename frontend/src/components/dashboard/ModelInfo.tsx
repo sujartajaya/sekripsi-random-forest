@@ -5,11 +5,11 @@ export default function ModelInfo() {
 
       <pre className="text-orange-400 overflow-auto">
         {`{
-  "Model": "Random Forest",
-  "Trees": 100,
-  "Accuracy": "96%",
-  "Dataset": 292
-}`}
+          "Model": "Random Forest",
+          "Trees": 100,
+          "Accuracy": "96%",
+          "Dataset": 292
+        }`}
       </pre>
     </div>
   );
