@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 from utils.style import load_css
 from components.sidebar import render_sidebar
+import requests
+from services.api import get_model_info
 
 # =========================================
 # CONFIG
@@ -75,27 +77,40 @@ st.divider()
 # =========================================
 # METRIC
 # =========================================
+meta_info = get_model_info()
+
+try:
+    accuracy = meta_info["model_info"]["accuracy"]
+    precision = meta_info["model_info"]["precision"]
+    recall = meta_info["model_info"]["recall"]
+    dataset_rows = meta_info["model_info"]["dataset_rows"]
+
+except KeyError:
+    accuracy = "N/A"
+    precision = "N/A"
+    recall = "N/A"
+    dataset_rows = "N/A"    
 
 col1, col2, col3, col4 = st.columns(4)
 
 col1.metric(
     label="Accuracy",
-    value="96%"
+    value=f"{accuracy * 100:.2f}%" if isinstance(accuracy, (int, float)) else accuracy
 )
 
 col2.metric(
     label="Precision",
-    value="94%"
+    value=f"{precision * 100:.2f}%" if isinstance(precision, (int, float)) else precision
 )
 
 col3.metric(
     label="Recall",
-    value="95%"
+    value=f"{recall * 100:.2f}%" if isinstance(recall, (int, float)) else recall
 )
 
 col4.metric(
     label="Dataset",
-    value="292 Rows"
+    value=f"{dataset_rows} Rows" if isinstance(dataset_rows, (int, float)) else dataset_rows
 )
 
 # =========================================

@@ -1,33 +1,5 @@
 import streamlit as st
 
-# def load_css():
-
-#     st.markdown("""
-#     <style>
-
-#     /* Hide Streamlit toolbar */
-#     [data-testid="stToolbar"] {
-#         display: none;
-#     }
-
-#     /* Hide hamburger menu */
-#     #MainMenu {
-#         visibility: hidden;
-#     }
-
-#     /* Hide footer */
-#     footer {
-#         visibility: hidden;
-#     }
-
-#     /* Hide header */
-#     header {
-#         visibility: hidden;
-#     }
-
-#     </style>
-#     """, unsafe_allow_html=True)
-
 def load_css():
 
     st.markdown("""

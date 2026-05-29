@@ -32,3 +32,17 @@ def predict(data):
     response.raise_for_status()
 
     return response.json()
+
+# =========================================
+# GET MODEL INFO
+# =========================================
+def get_model_info():
+
+    response = requests.get(
+        f"{API_URL}/model/load-model",
+        timeout=30
+    )
+
+    response.raise_for_status()
+
+    return response.json() 
