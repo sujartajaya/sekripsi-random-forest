@@ -5,3 +5,8 @@ pandas
 python-multipart
 pydantic-settings
 requests
+sqlalchemy
+pymysql
+alembic
+python-dotenv
+email-validator

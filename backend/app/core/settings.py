@@ -23,6 +23,14 @@ class Settings(BaseSettings):
 
     DEBUG: bool = True
 
+    # Database
+    DB_HOST: str = "mysql"
+    DB_PORT: int = 3306
+    DB_NAME: str = "autism_db"
+    DB_USER: str = "root"
+    DB_PASSWORD: str = "susah_diingat"
+
+
     class Config:
         env_file = ".env"
 

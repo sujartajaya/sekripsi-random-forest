@@ -1,7 +1,18 @@
+from datetime import date
+
 from pydantic import BaseModel
+from pydantic import EmailStr
 
 
 class PredictRequest(BaseModel):
+
+    patient_name: str
+
+    birth_date: date
+
+    guardian_name: str
+    guardian_email: EmailStr
+    guardian_phone: str
 
     A1_Score: bool
     A2_Score: bool

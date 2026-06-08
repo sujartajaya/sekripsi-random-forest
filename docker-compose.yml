@@ -64,7 +64,7 @@ services:
     ports:
       - "8000:8000"
     env_file:
-      - .env
+      - ./backend/.env
     depends_on:
       - mysql
     volumes:
@@ -121,6 +121,18 @@ services:
 
       # optional logs
       - ./nginx/logs:/var/log/nginx
+    networks:
+      - localnet
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: my-phpmyadmin-container
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=mysql
+      - TZ=Asia/Makassar
     networks:
       - localnet
 
