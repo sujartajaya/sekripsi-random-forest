@@ -2,6 +2,13 @@ from fastapi import FastAPI
 from app.routes.model_routes import router as model_router
 from app.routes.question_routes import router as question_router
 from app.routes.patient_routes import router as patient_router
+from app.routes.user_routes import (
+    router as user_router
+)
+from app.routes.patient_routes import (
+    router as patient_router
+)
+
 
 app = FastAPI(
     title="API Skripsi Random Forest",
@@ -14,4 +21,6 @@ def read_root():
 
 app.include_router(model_router)
 app.include_router(question_router)
+app.include_router(patient_router)
+app.include_router(user_router)
 app.include_router(patient_router)

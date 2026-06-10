@@ -1,11 +1,10 @@
-from datetime import date
 from datetime import datetime
 
 from pydantic import BaseModel
 from pydantic import ConfigDict
 
 
-class PatientResponse(BaseModel):
+class UserResponse(BaseModel):
 
     model_config = ConfigDict(
         from_attributes=True
@@ -13,12 +12,20 @@ class PatientResponse(BaseModel):
 
     id: int
 
-    user_id: int
+    full_name: str
 
-    patient_name: str
+    username: str
 
-    birth_date: date
+    email: str
 
+    phone: str | None
+
+    address: str | None
+
+    is_active: bool
+
+    last_login_at: datetime | None
+    
     created_at: datetime
 
     updated_at: datetime

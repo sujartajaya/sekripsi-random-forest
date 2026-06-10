@@ -61,6 +61,36 @@ class User(Base):
         default=True
     )
 
+    last_login_at = Column(
+        DateTime,
+        nullable=True
+    )
+
+    email_verified_at = Column(
+        DateTime,
+        nullable=True
+    )
+
+    is_admin = Column(
+        Boolean,
+        default=False
+    )
+
+    avatar = Column(
+        String(255),
+        nullable=True
+    )
+
+    remember_token = Column(
+        String(255),
+        nullable=True
+    )
+
+    deleted_at = Column(
+        DateTime,
+        nullable=True
+    )    
+
     created_at = Column(
         DateTime,
         server_default=func.now()

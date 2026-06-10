@@ -288,3 +288,9 @@ Jika sudah dilanjutkan perintah seperti berikut ini:
 ```text
 alembic upgrade head
 ```
+
+Jika ingin reset semua table berikut ini perintahnya:
+
+```text
+alembic downgrade base
+```
