@@ -71,9 +71,25 @@ class User(Base):
         nullable=True
     )
 
-    is_admin = Column(
-        Boolean,
-        default=False
+    verify_email_token = Column(
+        String(255),
+        nullable=True
+    )
+
+    verify_email_expired_at = Column(
+        DateTime,
+        nullable=True
+    )
+
+    # is_admin = Column(
+    #     Boolean,
+    #     default=False
+    # )
+
+    role = Column(
+        String(50),
+        nullable=False,
+        server_default="user"
     )
 
     avatar = Column(
