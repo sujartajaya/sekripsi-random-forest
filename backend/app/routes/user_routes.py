@@ -19,6 +19,23 @@ from app.ml.services.user_service import (
     get_users
 )
 
+from fastapi import (
+    APIRouter,
+    Depends,
+    HTTPException
+)
+
+from sqlalchemy.orm import Session
+
+from app.database import get_db
+
+from app.ml.services.user_service import (
+    send_verify_email
+)
+
+from app.core.auth import get_current_user
+
+
 router = APIRouter(
     prefix="/users",
     tags=["Users"]
@@ -64,3 +81,35 @@ def list_users(
 
     return get_users(db)
 
+
+@router.post(
+    "/send-verification-email"
+)
+def send_verification_email(
+    db: Session = Depends(get_db),
+    current_user=Depends(get_current_user)
+):
+
+    result = send_verify_email(
+        db,
+        current_user.id
+    )
+
+    if result is None:
+
+        raise HTTPException(
+            status_code=404,
+            detail="User tidak ditemukan"
+        )
+
+    if result == "verified":
+
+        raise HTTPException(
+            status_code=400,
+            detail="Email sudah terverifikasi"
+        )
+
+    return {
+        "status": "success",
+        "message": "Email verifikasi berhasil dikirim"
+    }

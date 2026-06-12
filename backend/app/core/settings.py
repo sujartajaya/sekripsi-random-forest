@@ -30,6 +30,13 @@ class Settings(BaseSettings):
     DB_USER: str = "root"
     DB_PASSWORD: str = "susah_diingat"
 
+    # SMTP Settings
+    SMTP_HOST: str
+    SMTP_PORT: int
+    SMTP_USERNAME: str
+    SMTP_PASSWORD: str
+    SMTP_FROM: str
+    APP_URL: str
 
     class Config:
         env_file = ".env"

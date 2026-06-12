@@ -12,6 +12,16 @@ from app.core.security import (
     hash_password
 )
 
+import secrets
+
+from datetime import (
+    datetime,
+    timedelta
+)
+
+from app.core.email import send_email
+from app.core.settings import settings
+
 def create_user(
     db: Session,
     payload: UserCreateRequest
@@ -142,19 +152,30 @@ from datetime import datetime
 
 def verify_email(
     db: Session,
-    user_id: int
+    token: str
 ):
 
     user = (
         db.query(User)
-        .filter(User.id == user_id)
+        .filter(
+            User.verify_email_token == token
+        )
         .first()
     )
 
     if user is None:
         return None
 
+    if (
+        user.verify_email_expired_at
+        < datetime.utcnow()
+    ):
+        return None
+
     user.email_verified_at = datetime.utcnow()
+
+    user.verify_email_token = None
+    user.verify_email_expired_at = None
 
     db.commit()
 
@@ -220,5 +241,69 @@ def delete_user(
     db.delete(user)
 
     db.commit()
+
+    return True
+
+
+# Send email verification
+def send_verify_email(
+    db: Session,
+    user_id: int
+):
+
+    user = (
+        db.query(User)
+        .filter(
+            User.id == user_id
+        )
+        .first()
+    )
+
+    if user is None:
+        return None
+
+    if user.email_verified_at is not None:
+        return "verified"
+
+    token = secrets.token_urlsafe(32)
+
+    user.verify_email_token = token
+
+    user.verify_email_expired_at = (
+        datetime.utcnow()
+        + timedelta(minutes=30)
+    )
+
+    db.commit()
+
+    verify_url = (
+        f"{settings.FRONTEND_URL}"
+        f"/verify-email"
+        f"?token={token}"
+    )
+
+    html = f"""
+    <h2>Verifikasi Email</h2>
+
+    <p>Halo {user.full_name}</p>
+
+    <p>
+        Klik tombol berikut untuk verifikasi email:
+    </p>
+
+    <a href="{verify_url}">
+        Verifikasi Email
+    </a>
+
+    <p>
+        Link berlaku selama 30 menit.
+    </p>
+    """
+
+    send_email(
+        to_email=user.email,
+        subject="Verifikasi Email",
+        html=html
+    )
 
     return True
