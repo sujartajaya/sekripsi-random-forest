@@ -304,3 +304,86 @@
 2026/06/10 07:55:47 [notice] 1#1: signal 17 (SIGCHLD) received from 29
 2026/06/10 07:55:47 [notice] 1#1: worker process 29 exited with code 0
 2026/06/10 07:55:47 [notice] 1#1: exit
+2026/06/11 10:35:25 [notice] 1#1: using the "epoll" event method
+2026/06/11 10:35:25 [notice] 1#1: nginx/1.30.2
+2026/06/11 10:35:25 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/06/11 10:35:25 [notice] 1#1: OS: Linux 6.18.33.1-microsoft-standard-WSL2
+2026/06/11 10:35:25 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/06/11 10:35:25 [notice] 1#1: start worker processes
+2026/06/11 10:35:25 [notice] 1#1: start worker process 29
+2026/06/11 10:35:25 [notice] 1#1: start worker process 30
+2026/06/11 11:13:35 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2026/06/11 11:13:35 [notice] 29#29: gracefully shutting down
+2026/06/11 11:13:35 [notice] 30#30: gracefully shutting down
+2026/06/11 11:13:35 [notice] 29#29: exiting
+2026/06/11 11:13:35 [notice] 30#30: exiting
+2026/06/11 11:13:35 [notice] 29#29: exit
+2026/06/11 11:13:35 [notice] 30#30: exit
+2026/06/11 11:13:35 [notice] 1#1: signal 17 (SIGCHLD) received from 30
+2026/06/11 11:13:35 [notice] 1#1: worker process 29 exited with code 0
+2026/06/11 11:13:35 [notice] 1#1: worker process 30 exited with code 0
+2026/06/11 11:13:35 [notice] 1#1: exit
+2026/06/11 13:35:00 [notice] 1#1: using the "epoll" event method
+2026/06/11 13:35:00 [notice] 1#1: nginx/1.30.2
+2026/06/11 13:35:00 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/06/11 13:35:00 [notice] 1#1: OS: Linux 6.18.33.1-microsoft-standard-WSL2
+2026/06/11 13:35:00 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/06/11 13:35:00 [notice] 1#1: start worker processes
+2026/06/11 13:35:00 [notice] 1#1: start worker process 29
+2026/06/11 13:35:00 [notice] 1#1: start worker process 30
+2026/06/11 13:44:16 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2026/06/11 13:44:16 [notice] 29#29: gracefully shutting down
+2026/06/11 13:44:16 [notice] 30#30: gracefully shutting down
+2026/06/11 13:44:16 [notice] 30#30: exiting
+2026/06/11 13:44:16 [notice] 29#29: exiting
+2026/06/11 13:44:16 [notice] 30#30: exit
+2026/06/11 13:44:16 [notice] 29#29: exit
+2026/06/11 13:44:16 [notice] 1#1: signal 17 (SIGCHLD) received from 29
+2026/06/11 13:44:16 [notice] 1#1: worker process 29 exited with code 0
+2026/06/11 13:44:16 [notice] 1#1: signal 29 (SIGIO) received
+2026/06/11 13:44:16 [notice] 1#1: signal 17 (SIGCHLD) received from 30
+2026/06/11 13:44:16 [notice] 1#1: worker process 30 exited with code 0
+2026/06/11 13:44:16 [notice] 1#1: exit
+2026/06/11 13:45:33 [notice] 1#1: using the "epoll" event method
+2026/06/11 13:45:33 [notice] 1#1: nginx/1.30.2
+2026/06/11 13:45:33 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/06/11 13:45:33 [notice] 1#1: OS: Linux 6.18.33.1-microsoft-standard-WSL2
+2026/06/11 13:45:33 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/06/11 13:45:33 [notice] 1#1: start worker processes
+2026/06/11 13:45:33 [notice] 1#1: start worker process 29
+2026/06/11 13:45:33 [notice] 1#1: start worker process 30
+2026/06/11 14:28:05 [error] 29#29: *1 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost"
+2026/06/11 14:28:05 [error] 29#29: *1 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost"
+2026/06/11 14:28:06 [error] 29#29: *1 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2026/06/11 14:37:57 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2026/06/11 14:37:57 [notice] 29#29: gracefully shutting down
+2026/06/11 14:37:57 [notice] 30#30: gracefully shutting down
+2026/06/11 14:37:57 [notice] 29#29: exiting
+2026/06/11 14:37:57 [notice] 30#30: exiting
+2026/06/11 14:37:57 [notice] 30#30: exit
+2026/06/11 14:37:57 [notice] 29#29: exit
+2026/06/11 14:37:57 [notice] 1#1: signal 17 (SIGCHLD) received from 29
+2026/06/11 14:37:57 [notice] 1#1: worker process 29 exited with code 0
+2026/06/11 14:37:57 [notice] 1#1: worker process 30 exited with code 0
+2026/06/11 14:37:57 [notice] 1#1: exit
+2026/06/11 14:38:46 [notice] 1#1: using the "epoll" event method
+2026/06/11 14:38:46 [notice] 1#1: nginx/1.30.2
+2026/06/11 14:38:46 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/06/11 14:38:46 [notice] 1#1: OS: Linux 6.18.33.1-microsoft-standard-WSL2
+2026/06/11 14:38:46 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:1048576
+2026/06/11 14:38:46 [notice] 1#1: start worker processes
+2026/06/11 14:38:46 [notice] 1#1: start worker process 29
+2026/06/11 14:38:46 [notice] 1#1: start worker process 30
+2026/06/11 14:41:08 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2026/06/11 14:41:08 [notice] 29#29: gracefully shutting down
+2026/06/11 14:41:08 [notice] 29#29: exiting
+2026/06/11 14:41:08 [notice] 29#29: exit
+2026/06/11 14:41:08 [notice] 30#30: gracefully shutting down
+2026/06/11 14:41:08 [notice] 30#30: exiting
+2026/06/11 14:41:08 [notice] 30#30: exit
+2026/06/11 14:41:09 [notice] 1#1: signal 17 (SIGCHLD) received from 30
+2026/06/11 14:41:09 [notice] 1#1: worker process 30 exited with code 0
+2026/06/11 14:41:09 [notice] 1#1: signal 29 (SIGIO) received
+2026/06/11 14:41:09 [notice] 1#1: signal 17 (SIGCHLD) received from 29
+2026/06/11 14:41:09 [notice] 1#1: worker process 29 exited with code 0
+2026/06/11 14:41:09 [notice] 1#1: exit
