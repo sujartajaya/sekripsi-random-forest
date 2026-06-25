@@ -1,4 +1,6 @@
-# Skenario pendaftaran user
+# Algoritma user
+
+## Register user
 
 ```text
 Register
@@ -32,4 +34,47 @@ simpan ke database
                  │
                  ▼
 Kirim email
+```
+
+## Login user
+```text
+Login
+      │
+      ▼
+cek username
+      │
+      ▼
+cek password
+      │
+      ▼
+create_access_token(
+    {
+        "user_id": user.id
+    }
+)
+      │
+      ▼
+JWT
+      │
+      ▼
+Frontend simpan JWT
+      │
+      ▼
+Authorization: Bearer xxxxxx
+      │
+      ▼
+get_current_user()
+      │
+      ▼
+decode_token()
+      │
+      ▼
+ambil user_id
+      │
+      ▼
+SELECT * FROM users
+WHERE id=user_id
+      │
+      ▼
+return User
 ```

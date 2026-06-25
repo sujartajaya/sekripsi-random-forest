@@ -22,6 +22,16 @@ from datetime import (
 from app.core.email import send_email
 from app.core.settings import settings
 
+from app.core.security import (
+    verify_password,
+    create_access_token
+)
+
+from app.schemas.user_request import (
+    LoginRequest
+)
+
+
 def create_user(
     db: Session,
     payload: UserCreateRequest
@@ -43,7 +53,7 @@ def create_user(
 
         address=payload.address,
 
-        is_active=True
+        is_active=False
     )
 
     db.add(user)
@@ -307,3 +317,43 @@ def send_verify_email(
     )
 
     return True
+
+
+def login(
+    db: Session,
+    payload: LoginRequest
+):
+
+    user = (
+        db.query(User)
+        .filter(
+            User.username == payload.username
+        )
+        .first()
+    )
+
+    if user is None:
+        return None
+
+    if not verify_password(
+        payload.password,
+        user.password_hash
+    ):
+        return False
+
+    token = create_access_token(
+        {
+            "user_id": user.id
+        }
+    )
+
+    update_last_login(
+        db=db,
+        user_id=user.id
+    )
+
+    return {
+        "access_token": token,
+        "token_type": "Bearer",
+        "user": user
+    }

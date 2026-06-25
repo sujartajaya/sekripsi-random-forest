@@ -38,6 +38,12 @@ class Settings(BaseSettings):
     SMTP_FROM: str
     APP_URL: str
 
+    # JWT Settings
+    ACCESS_TOKEN_EXPIRE_MINUTES: int
+    SECRET_KEY: str
+    ALGORITHM: str
+    FRONTEND_URL: str
+    
     class Config:
         env_file = ".env"
 

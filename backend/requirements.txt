@@ -11,3 +11,4 @@ alembic
 python-dotenv
 email-validator
 pwdlib[argon2]
+python-jose[cryptography]
